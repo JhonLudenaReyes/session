@@ -22,7 +22,7 @@ func Connect() error {
 		panic(err)
 	}
 
-	Database.AutoMigrate(&entities.User{})
+	Database.AutoMigrate(&entities.User{}, &entities.Person{}, &entities.Role{})
 
 	return nil
 }
