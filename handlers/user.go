@@ -51,13 +51,13 @@ func AddUser(c *fiber.Ctx) error {
 
 func UpdateUser(c *fiber.Ctx) error {
 	user := new(entities.User)
-	id := c.Params("id")
+	userId := c.Params("userId")
 
 	if err := c.BodyParser(user); err != nil {
 		return c.Status(503).SendString(err.Error())
 	}
 
-	config.Database.Where("id = ?", id).Updates(&user)
+	config.Database.Where("user_id = ?", userId).Updates(&user)
 	return c.Status(200).JSON(user)
 }
 
