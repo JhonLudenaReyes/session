@@ -26,5 +26,7 @@ func main() {
 	app.Put("/users/:userId", handlers.UpdateUser)
 	app.Delete("/users/:id", handlers.RemoveUser)
 
+	app.Post("/people", handlers.AddPerson)
+
 	log.Fatal(app.Listen(":4449"))
 }
