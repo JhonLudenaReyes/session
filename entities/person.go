@@ -6,5 +6,5 @@ type Person struct {
 	LastName  string `json:"lastName" gorm:"size:30; not null"`
 	Email     string `json:"email" gorm:"size:80; not null"`
 	CellPhone string `json:"cellPhone" gorm:"size:10; not null"`
-	State     string `json:"state" gorm:"size:1; default:'A'"`
+	State     string `json:"state" gorm:"size:1; not null; default:'A'"`
 }

@@ -10,6 +10,24 @@ import (
 
 // ...
 
+func GetLoginUser(c *fiber.Ctx) error {
+	user := new(entities.User)
+
+	if err := c.BodyParser(user); err != nil {
+		return c.Status(503).SendString(err.Error())
+	}
+
+	result := config.Database.Joins("Person").Joins("Role").Find(&user, "user= ? and password= ?", user.User, user.Password)
+
+	if result.RowsAffected == 0 {
+		return c.SendStatus(404)
+	}
+
+	return c.Status(200).JSON(user)
+}
+
+// ...
+
 func GetUsers(c *fiber.Ctx) error {
 	var users []entities.User
 
