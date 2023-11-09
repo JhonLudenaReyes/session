@@ -20,7 +20,7 @@ func GetLoginUser(c *fiber.Ctx) error {
 	result := config.Database.Joins("Person").Joins("Role").Find(&user, "user= ? and password= ?", user.User, user.Password)
 
 	if result.RowsAffected == 0 {
-		return c.SendStatus(404)
+		return c.SendString("Su usuario y/o contraseña son incorrectos")
 	}
 
 	return c.Status(200).JSON(user)
