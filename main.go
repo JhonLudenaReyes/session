@@ -36,7 +36,11 @@ func main() {
 	// API SESSION LOGIN
 	app.Post("/users/session/login", handlers.GetLoginUser)
 
-	app.Post("/people", handlers.AddPerson)
+	// APIS PERSON
+	app.Post("/people/save-person", handlers.AddPerson)
+
+	// APIS ROLE
+	app.Post("/roles/save-role", handlers.AddRole)
 
 	log.Fatal(app.Listen(":4449"))
 }
