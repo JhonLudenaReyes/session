@@ -27,14 +27,15 @@ func main() {
 
 	config.Connect()
 
-	app.Get("/users", handlers.GetUsers)
-	app.Get("/users/:id", handlers.GetUser)
-	app.Post("/users", handlers.AddUser)
-	app.Put("/users/:userId", handlers.UpdateUser)
-	app.Delete("/users/:id", handlers.RemoveUser)
-
 	// API SESSION LOGIN
 	app.Post("/users/session/login", handlers.GetLoginUser)
+
+	// APIS USER
+	app.Get("/users", handlers.GetUsers)
+	app.Get("/users/:id", handlers.GetUser)
+	app.Post("/users/save-user", handlers.AddUser)
+	app.Put("/users/:userId", handlers.UpdateUser)
+	app.Delete("/users/:id", handlers.RemoveUser)
 
 	// APIS PERSON
 	app.Post("/people/save-person", handlers.AddPerson)
